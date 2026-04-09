@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-Based Respiratory Disease Detection System — Detect Asthma, COPD, Tuberculosis, and Pneumonia using chest X-rays and lung sound analysis powered by deep learning.">
+    <meta name="keywords" content="respiratory disease, AI diagnosis, chest X-ray, lung sounds, asthma, COPD, tuberculosis, pneumonia, deep learning, medical AI">
+    <meta name="author" content="ISE Department, SJBIT">
+    <title>RespiAI — AI-Based Respiratory Disease Detection</title>
+
+    <!-- ===== Google Fonts ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- ===== Font Awesome Icons ===== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- ===== Project Stylesheet ===== -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ========================================= -->
+    <!--           PAGE PRELOADER                  -->
+    <!-- ========================================= -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-icon">
+                <i class="fa-solid fa-lungs"></i>
+            </div>
+            <div class="preloader-text">
+                <span class="logo-text">Respi<span class="logo-accent">AI</span></span>
+            </div>
+            <div class="preloader-dots">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ========================================= -->
+    <!--             NAVIGATION BAR                -->
+    <!-- ========================================= -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+
+            <!-- Logo -->
+            <a href="#home" class="nav-logo" id="nav-logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-lungs"></i>
+                </div>
+                <span class="logo-text">Respi<span class="logo-accent">AI</span></span>
+            </a>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="nav-link active" data-section="home">
+                    <i class="fa-solid fa-house"></i><span>Home</span>
+                </a></li>
+                <li><a href="#about" class="nav-link" data-section="about">
+                    <i class="fa-solid fa-circle-info"></i><span>About</span>
+                </a></li>
+                <li><a href="#diseases" class="nav-link" data-section="diseases">
+                    <i class="fa-solid fa-virus"></i><span>Diseases</span>
+                </a></li>
+                <li><a href="#upload" class="nav-link" data-section="upload">
+                    <i class="fa-solid fa-cloud-arrow-up"></i><span>Upload</span>
+                </a></li>
+                <li><a href="#dashboard" class="nav-link" data-section="dashboard">
+                    <i class="fa-solid fa-chart-line"></i><span>Dashboard</span>
+                </a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact">
+                    <i class="fa-solid fa-envelope"></i><span>Contact</span>
+                </a></li>
+            </ul>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ========================================= -->
+    <!--           MAIN CONTENT AREA               -->
+    <!-- ========================================= -->
+    <main id="main-content">
+
+        <!-- ========================================= -->
+        <!--       PHASE 2: HERO / LANDING SECTION       -->
+        <!-- ========================================= -->
+        <section id="home" class="hero-section">
+
+            <!-- Animated background particles -->
+            <div class="hero-bg">
+                <div class="hero-gradient"></div>
+                <div class="hero-particles" id="hero-particles">
+                    <!-- Floating medical icons generated via CSS -->
+                    <i class="fa-solid fa-dna particle"></i>
+                    <i class="fa-solid fa-virus particle"></i>
+                    <i class="fa-solid fa-stethoscope particle"></i>
+                    <i class="fa-solid fa-heartbeat particle"></i>
+                    <i class="fa-solid fa-lungs particle"></i>
+                    <i class="fa-solid fa-microscope particle"></i>
+                    <i class="fa-solid fa-syringe particle"></i>
+                    <i class="fa-solid fa-pills particle"></i>
+                </div>
+                <!-- Animated grid overlay -->
+                <div class="hero-grid-overlay"></div>
+            </div>
+
+            <div class="container hero-container">
+                <!-- Left Column: Text Content -->
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="fa-solid fa-sparkles"></i>
+                        <span>Powered by Deep Learning & AI</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        AI-Based<br>
+                        <span class="hero-title-gradient">Respiratory Disease</span><br>
+                        Detection System
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        Advanced multimodal diagnostic platform combining chest X-ray analysis 
+                        and lung sound classification to detect <strong>Asthma, COPD, Tuberculosis,</strong> 
+                        and <strong>Pneumonia</strong> with clinical-grade accuracy.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#upload" class="btn btn-primary" id="btn-get-started">
+                            <i class="fa-solid fa-rocket"></i>
+                            <span>Get Started</span>
+                        </a>
+                        <a href="#upload" class="btn btn-outline" id="btn-upload-data">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <span>Upload Data</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust badges -->
+                    <div class="hero-trust">
+                        <div class="trust-item">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>HIPAA Compliant</span>
+                        </div>
+                        <div class="trust-divider"></div>
+                        <div class="trust-item">
+                            <i class="fa-solid fa-brain"></i>
+                            <span>Deep Learning</span>
+                        </div>
+                        <div class="trust-divider"></div>
+                        <div class="trust-item">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>Real-time Results</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Hero Illustration -->
+                <div class="hero-visual">
+                    <div class="hero-image-wrapper">
+                        <!-- Animated glow ring -->
+                        <div class="glow-ring"></div>
+                        <div class="glow-ring glow-ring-2"></div>
+                        <img 
+                            src="assets/images/hero-lungs-ai.png" 
+                            alt="AI-powered respiratory disease detection illustration showing digital lungs with neural networks" 
+                            class="hero-image"
+                            id="hero-image"
+                        >
+                    </div>
+
+                    <!-- Floating stat cards -->
+                    <div class="floating-card floating-card-1">
+                        <div class="floating-card-icon" style="background: rgba(16, 185, 129, 0.15); color: var(--success);">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <div class="floating-card-text">
+                            <span class="floating-card-value">96.8%</span>
+                            <span class="floating-card-label">Accuracy</span>
+                        </div>
+                    </div>
+
+                    <div class="floating-card floating-card-2">
+                        <div class="floating-card-icon" style="background: rgba(59, 130, 246, 0.15); color: var(--primary-500);">
+                            <i class="fa-solid fa-lungs"></i>
+                        </div>
+                        <div class="floating-card-text">
+                            <span class="floating-card-value">4</span>
+                            <span class="floating-card-label">Diseases</span>
+                        </div>
+                    </div>
+
+                    <div class="floating-card floating-card-3">
+                        <div class="floating-card-icon" style="background: rgba(245, 158, 11, 0.15); color: var(--warning);">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <div class="floating-card-text">
+                            <span class="floating-card-value">&lt;3s</span>
+                            <span class="floating-card-label">Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="scroll-indicator" id="scroll-indicator">
+                <div class="scroll-mouse">
+                    <div class="scroll-wheel"></div>
+                </div>
+                <span>Scroll to explore</span>
+            </div>
+        </section>
+
+        <!-- ========================================= -->
+        <!--         PHASE 3: ABOUT SECTION             -->
+        <!-- ========================================= -->
+        <section id="about" class="section about-section">
+            <div class="container">
+
+                <!-- Section Header -->
+                <div class="section-header" data-animate>
+                    <span class="section-tag">
+                        <i class="fa-solid fa-microscope"></i>
+                        How It Works
+                    </span>
+                    <h2 class="section-title">Intelligent Respiratory<br><span class="gradient-text">Disease Analysis</span></h2>
+                    <p class="section-description">
+                        Our system leverages cutting-edge deep learning models to analyze both 
+                        chest X-ray images and lung sound recordings, delivering accurate, 
+                        explainable diagnoses in seconds.
+                    </p>
+                </div>
+
+                <!-- Feature Cards Grid -->
+                <div class="about-grid">
+
+                    <!-- Card 1: Multimodal Input -->
+                    <div class="about-card" data-animate>
+                        <div class="about-card-icon" style="--card-accent: var(--primary-500);">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <h3 class="about-card-title">Multimodal Input</h3>
+                        <p class="about-card-desc">
+                            Accepts both chest X-ray images and lung auscultation audio recordings 
+                            for comprehensive dual-mode analysis.
+                        </p>
+                        <ul class="about-card-features">
+                            <li><i class="fa-solid fa-check"></i> Chest X-ray (DICOM/PNG/JPG)</li>
+                            <li><i class="fa-solid fa-check"></i> Lung sound audio (WAV/MP3)</li>
+                            <li><i class="fa-solid fa-check"></i> Drag & drop upload</li>
+                        </ul>
+                        <div class="about-card-shine"></div>
+                    </div>
+
+                    <!-- Card 2: AI Diagnosis -->
+                    <div class="about-card" data-animate>
+                        <div class="about-card-icon" style="--card-accent: var(--accent-500);">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h3 class="about-card-title">AI-Powered Diagnosis</h3>
+                        <p class="about-card-desc">
+                            Deep learning CNN and spectrogram models classify diseases with 
+                            high accuracy using trained medical datasets.
+                        </p>
+                        <ul class="about-card-features">
+                            <li><i class="fa-solid fa-check"></i> CNN image classification</li>
+                            <li><i class="fa-solid fa-check"></i> Mel-spectrogram analysis</li>
+                            <li><i class="fa-solid fa-check"></i> 96.8% accuracy rate</li>
+                        </ul>
+                        <div class="about-card-shine"></div>
+                    </div>
+
+                    <!-- Card 3: Real-time ESP32 Monitoring -->
+                    <div class="about-card" data-animate>
+                        <div class="about-card-icon" style="--card-accent: var(--success);">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <h3 class="about-card-title">Real-time ESP32 Monitoring</h3>
+                        <p class="about-card-desc">
+                            Live lung sound capture using ESP32 microcontroller with digital 
+                            stethoscope for continuous patient monitoring.
+                        </p>
+                        <ul class="about-card-features">
+                            <li><i class="fa-solid fa-check"></i> ESP32 + I2S microphone</li>
+                            <li><i class="fa-solid fa-check"></i> WebSocket live streaming</li>
+                            <li><i class="fa-solid fa-check"></i> Real-time waveforms</li>
+                        </ul>
+                        <div class="about-card-shine"></div>
+                    </div>
+
+                    <!-- Card 4: Explainable AI -->
+                    <div class="about-card" data-animate>
+                        <div class="about-card-icon" style="--card-accent: var(--warning);">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <h3 class="about-card-title">Explainable AI (XAI)</h3>
+                        <p class="about-card-desc">
+                            Grad-CAM heatmaps and LIME explanations provide transparent, 
+                            interpretable reasoning for every diagnosis.
+                        </p>
+                        <ul class="about-card-features">
+                            <li><i class="fa-solid fa-check"></i> Grad-CAM heatmaps</li>
+                            <li><i class="fa-solid fa-check"></i> LIME explanations</li>
+                            <li><i class="fa-solid fa-check"></i> Confidence scoring</li>
+                        </ul>
+                        <div class="about-card-shine"></div>
+                    </div>
+                </div>
+
+                <!-- Stats Bar -->
+                <div class="about-stats" data-animate>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="4">0</span>
+                        <span class="stat-label">Diseases Detected</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="96" data-suffix=".8%">0</span>
+                        <span class="stat-label">Accuracy Rate</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="2">0</span>
+                        <span class="stat-label">Input Modalities</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="3" data-suffix="s">0</span>
+                        <span class="stat-label">Avg. Analysis Time</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================= -->
+        <!--       PHASE 4: DISEASE INFO SECTION        -->
+        <!-- ========================================= -->
+        <section id="diseases" class="section diseases-section">
+            <div class="container">
+
+                <!-- Section Header -->
+                <div class="section-header" data-animate>
+                    <span class="section-tag">
+                        <i class="fa-solid fa-virus"></i>
+                        Detectable Conditions
+                    </span>
+                    <h2 class="section-title">Respiratory Diseases<br><span class="gradient-text">We Diagnose</span></h2>
+                    <p class="section-description">
+                        Our AI system accurately identifies four major respiratory conditions 
+                        using advanced deep learning on chest X-rays and lung audio patterns.
+                    </p>
+                </div>
+
+                <!-- Disease Cards Grid -->
+                <div class="diseases-grid">
+
+                    <!-- Card 1: Asthma -->
+                    <div class="disease-card" data-animate style="--disease-color: #8b5cf6; --disease-bg: rgba(139, 92, 246, 0.08);">
+                        <div class="disease-card-accent"></div>
+                        <div class="disease-card-header">
+                            <div class="disease-icon-wrap">
+                                <i class="fa-solid fa-wind"></i>
+                            </div>
+                            <span class="disease-severity" style="--severity-color: #f59e0b;">
+                                <i class="fa-solid fa-circle"></i> Chronic
+                            </span>
+                        </div>
+                        <h3 class="disease-name">Asthma</h3>
+                        <p class="disease-desc">
+                            A chronic inflammatory condition causing airway narrowing, 
+                            wheezing, and breathing difficulty. Detected via characteristic 
+                            wheeze patterns in lung audio and hyperinflation on X-rays.
+                        </p>
+                        <div class="disease-symptoms">
+                            <h4 class="symptoms-title">
+                                <i class="fa-solid fa-stethoscope"></i> Key Symptoms
+                            </h4>
+                            <ul class="symptoms-list">
+                                <li><i class="fa-solid fa-lungs"></i> Wheezing & shortness of breath</li>
+                                <li><i class="fa-solid fa-wind"></i> Chest tightness</li>
+                                <li><i class="fa-solid fa-moon"></i> Coughing (especially at night)</li>
+                                <li><i class="fa-solid fa-person-running"></i> Exercise-induced symptoms</li>
+                            </ul>
+                        </div>
+                        <a href="#upload" class="disease-learn-more">
+                            Analyze Now <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Card 2: COPD -->
+                    <div class="disease-card" data-animate style="--disease-color: #f97316; --disease-bg: rgba(249, 115, 22, 0.08);">
+                        <div class="disease-card-accent"></div>
+                        <div class="disease-card-header">
+                            <div class="disease-icon-wrap">
+                                <i class="fa-solid fa-smoking"></i>
+                            </div>
+                            <span class="disease-severity" style="--severity-color: #ef4444;">
+                                <i class="fa-solid fa-circle"></i> Progressive
+                            </span>
+                        </div>
+                        <h3 class="disease-name">COPD</h3>
+                        <p class="disease-desc">
+                            Chronic Obstructive Pulmonary Disease causes persistent airflow 
+                            limitation. Identified through crackle/wheeze audio patterns 
+                            and emphysematous changes on chest X-rays.
+                        </p>
+                        <div class="disease-symptoms">
+                            <h4 class="symptoms-title">
+                                <i class="fa-solid fa-stethoscope"></i> Key Symptoms
+                            </h4>
+                            <ul class="symptoms-list">
+                                <li><i class="fa-solid fa-lungs"></i> Chronic breathlessness</li>
+                                <li><i class="fa-solid fa-droplet"></i> Persistent mucus production</li>
+                                <li><i class="fa-solid fa-head-side-cough"></i> Frequent chronic cough</li>
+                                <li><i class="fa-solid fa-battery-quarter"></i> Reduced exercise tolerance</li>
+                            </ul>
+                        </div>
+                        <a href="#upload" class="disease-learn-more">
+                            Analyze Now <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Card 3: Tuberculosis -->
+                    <div class="disease-card" data-animate style="--disease-color: #ef4444; --disease-bg: rgba(239, 68, 68, 0.08);">
+                        <div class="disease-card-accent"></div>
+                        <div class="disease-card-header">
+                            <div class="disease-icon-wrap">
+                                <i class="fa-solid fa-bacterium"></i>
+                            </div>
+                            <span class="disease-severity" style="--severity-color: #ef4444;">
+                                <i class="fa-solid fa-circle"></i> Infectious
+                            </span>
+                        </div>
+                        <h3 class="disease-name">Tuberculosis</h3>
+                        <p class="disease-desc">
+                            A bacterial infection (Mycobacterium tuberculosis) primarily 
+                            affecting the lungs. Detected via cavitary lesions and infiltrates 
+                            on X-rays, along with distinctive cough audio signatures.
+                        </p>
+                        <div class="disease-symptoms">
+                            <h4 class="symptoms-title">
+                                <i class="fa-solid fa-stethoscope"></i> Key Symptoms
+                            </h4>
+                            <ul class="symptoms-list">
+                                <li><i class="fa-solid fa-head-side-cough"></i> Persistent cough (3+ weeks)</li>
+                                <li><i class="fa-solid fa-droplet"></i> Blood in sputum (hemoptysis)</li>
+                                <li><i class="fa-solid fa-temperature-high"></i> Fever & night sweats</li>
+                                <li><i class="fa-solid fa-weight-scale"></i> Unexplained weight loss</li>
+                            </ul>
+                        </div>
+                        <a href="#upload" class="disease-learn-more">
+                            Analyze Now <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Card 4: Pneumonia -->
+                    <div class="disease-card" data-animate style="--disease-color: #06b6d4; --disease-bg: rgba(6, 182, 212, 0.08);">
+                        <div class="disease-card-accent"></div>
+                        <div class="disease-card-header">
+                            <div class="disease-icon-wrap">
+                                <i class="fa-solid fa-shield-virus"></i>
+                            </div>
+                            <span class="disease-severity" style="--severity-color: #f59e0b;">
+                                <i class="fa-solid fa-circle"></i> Acute
+                            </span>
+                        </div>
+                        <h3 class="disease-name">Pneumonia</h3>
+                        <p class="disease-desc">
+                            An acute lung infection causing inflammation and fluid in air sacs. 
+                            Identified via consolidation patterns on X-rays and crackle 
+                            sounds in lung auscultation recordings.
+                        </p>
+                        <div class="disease-symptoms">
+                            <h4 class="symptoms-title">
+                                <i class="fa-solid fa-stethoscope"></i> Key Symptoms
+                            </h4>
+                            <ul class="symptoms-list">
+                                <li><i class="fa-solid fa-temperature-high"></i> High fever with chills</li>
+                                <li><i class="fa-solid fa-head-side-cough"></i> Productive cough with phlegm</li>
+                                <li><i class="fa-solid fa-lungs"></i> Sharp chest pain on breathing</li>
+                                <li><i class="fa-solid fa-heart-pulse"></i> Rapid breathing & heart rate</li>
+                            </ul>
+                        </div>
+                        <a href="#upload" class="disease-learn-more">
+                            Analyze Now <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================= -->
+        <!--        PHASE 5: UPLOAD SECTION             -->
+        <!-- ========================================= -->
+        <section id="upload" class="section upload-section">
+            <div class="container">
+
+                <!-- Section Header -->
+                <div class="section-header" data-animate>
+                    <span class="section-tag">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        Upload & Analyze
+                    </span>
+                    <h2 class="section-title">Upload Your<br><span class="gradient-text">Medical Data</span></h2>
+                    <p class="section-description">
+                        Upload a chest X-ray image or lung sound audio recording. Our AI model 
+                        will analyze the data and provide a diagnosis within seconds.
+                    </p>
+                </div>
+
+                <!-- Upload Grid -->
+                <div class="upload-grid" data-animate>
+
+                    <!-- X-Ray Upload Zone -->
+                    <div class="upload-zone" id="xray-upload-zone">
+                        <div class="upload-zone-header">
+                            <div class="upload-zone-icon" style="--zone-color: var(--primary-500);">
+                                <i class="fa-solid fa-x-ray"></i>
+                            </div>
+                            <div>
+                                <h3 class="upload-zone-title">Chest X-Ray Image</h3>
+                                <p class="upload-zone-desc">Upload a frontal chest radiograph</p>
+                            </div>
+                        </div>
+
+                        <div class="dropzone" id="xray-dropzone" data-type="image">
+                            <input type="file" id="xray-input" class="dropzone-input" accept="image/*,.dcm" />
+                            <div class="dropzone-content" id="xray-dropzone-content">
+                                <div class="dropzone-icon">
+                                    <i class="fa-solid fa-image"></i>
+                                </div>
+                                <p class="dropzone-text">
+                                    <strong>Drag & drop</strong> your X-ray here<br>
+                                    <span>or click to browse files</span>
+                                </p>
+                                <span class="dropzone-formats">
+                                    <i class="fa-solid fa-circle-info"></i>
+                                    Supports: PNG, JPG, JPEG, DICOM
+                                </span>
+                            </div>
+                            <!-- Image Preview (hidden by default) -->
+                            <div class="dropzone-preview" id="xray-preview" style="display: none;">
+                                <img id="xray-preview-img" src="" alt="X-ray preview" />
+                                <button class="preview-remove" id="xray-remove" aria-label="Remove file">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- File Info -->
+                        <div class="file-info" id="xray-file-info" style="display: none;">
+                            <div class="file-info-icon"><i class="fa-solid fa-file-image"></i></div>
+                            <div class="file-info-details">
+                                <span class="file-info-name" id="xray-file-name">—</span>
+                                <span class="file-info-size" id="xray-file-size">—</span>
+                            </div>
+                            <i class="fa-solid fa-circle-check file-info-check"></i>
+                        </div>
+                    </div>
+
+                    <!-- Audio Upload Zone -->
+                    <div class="upload-zone" id="audio-upload-zone">
+                        <div class="upload-zone-header">
+                            <div class="upload-zone-icon" style="--zone-color: var(--accent-500);">
+                                <i class="fa-solid fa-waveform-lines"></i>
+                            </div>
+                            <div>
+                                <h3 class="upload-zone-title">Lung Sound Audio</h3>
+                                <p class="upload-zone-desc">Upload an auscultation recording</p>
+                            </div>
+                        </div>
+
+                        <div class="dropzone" id="audio-dropzone" data-type="audio">
+                            <input type="file" id="audio-input" class="dropzone-input" accept="audio/*" />
+                            <div class="dropzone-content" id="audio-dropzone-content">
+                                <div class="dropzone-icon">
+                                    <i class="fa-solid fa-microphone"></i>
+                                </div>
+                                <p class="dropzone-text">
+                                    <strong>Drag & drop</strong> your audio here<br>
+                                    <span>or click to browse files</span>
+                                </p>
+                                <span class="dropzone-formats">
+                                    <i class="fa-solid fa-circle-info"></i>
+                                    Supports: WAV, MP3, OGG, FLAC
+                                </span>
+                            </div>
+                            <!-- Audio Preview (hidden by default) -->
+                            <div class="dropzone-preview dropzone-preview-audio" id="audio-preview" style="display: none;">
+                                <div class="audio-preview-visual">
+                                    <i class="fa-solid fa-waveform-lines"></i>
+                                    <span>Audio file loaded</span>
+                                </div>
+                                <audio id="audio-preview-player" controls></audio>
+                                <button class="preview-remove" id="audio-remove" aria-label="Remove file">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- File Info -->
+                        <div class="file-info" id="audio-file-info" style="display: none;">
+                            <div class="file-info-icon" style="color: var(--accent-500);"><i class="fa-solid fa-file-audio"></i></div>
+                            <div class="file-info-details">
+                                <span class="file-info-name" id="audio-file-name">—</span>
+                                <span class="file-info-size" id="audio-file-size">—</span>
+                            </div>
+                            <i class="fa-solid fa-circle-check file-info-check"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analyze Panel -->
+                <div class="analyze-panel" data-animate>
+                    <div class="analyze-info">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>Your data is processed securely and never stored on our servers.</span>
+                    </div>
+                    <button class="btn btn-primary btn-analyze" id="btn-analyze" disabled>
+                        <span class="btn-analyze-text">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            Analyze with AI
+                        </span>
+                        <span class="btn-analyze-loading" style="display: none;">
+                            <div class="spinner"></div>
+                            Analyzing...
+                        </span>
+                    </button>
+                    <p class="analyze-status" id="analyze-status"></p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================= -->
+        <!--       PHASE 6: DASHBOARD SECTION           -->
+        <!-- ========================================= -->
+        <section id="dashboard" class="section dashboard-section">
+            <div class="container">
+
+                <!-- Section Header -->
+                <div class="section-header" data-animate>
+                    <span class="section-tag">
+                        <i class="fa-solid fa-chart-line"></i>
+                        Analysis Results
+                    </span>
+                    <h2 class="section-title">Diagnostic<br><span class="gradient-text">Dashboard</span></h2>
+                    <p class="section-description">
+                        View the AI-powered diagnosis results including predicted disease, 
+                        confidence scores, and explainable analysis.
+                    </p>
+                </div>
+
+                <!-- Dashboard Grid -->
+                <div class="dashboard-grid">
+
+                    <!-- ===== TOP RESULT BANNER ===== -->
+                    <div class="dash-card dash-result-banner" data-animate>
+                        <div class="result-badge">
+                            <i class="fa-solid fa-circle-check"></i> Primary Diagnosis
+                        </div>
+                        <div class="result-main">
+                            <div class="result-icon-lg">
+                                <i class="fa-solid fa-shield-virus" id="result-disease-icon"></i>
+                            </div>
+                            <div class="result-info">
+                                <h3 class="result-disease-name" id="result-disease-name">Pneumonia</h3>
+                                <p class="result-disease-type">Bacterial — Community Acquired</p>
+                            </div>
+                            <div class="result-confidence-ring" id="result-confidence-ring">
+                                <svg viewBox="0 0 100 100" class="confidence-svg">
+                                    <circle cx="50" cy="50" r="42" class="confidence-track" />
+                                    <circle cx="50" cy="50" r="42" class="confidence-fill" id="confidence-fill"
+                                        stroke-dasharray="263.9" stroke-dashoffset="26.4" />
+                                </svg>
+                                <div class="confidence-value">
+                                    <span class="confidence-pct" id="confidence-pct">90%</span>
+                                    <span class="confidence-label">Confidence</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="result-severity-bar">
+                            <span class="severity-label">Severity:</span>
+                            <div class="severity-dots">
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot"></span>
+                                <span class="severity-dot"></span>
+                            </div>
+                            <span class="severity-text">Moderate</span>
+                        </div>
+                    </div>
+
+                    <!-- ===== CONFIDENCE BREAKDOWN ===== -->
+                    <div class="dash-card" data-animate>
+                        <div class="dash-card-header">
+                            <h3 class="dash-card-title">
+                                <i class="fa-solid fa-bars-progress"></i> Confidence Breakdown
+                            </h3>
+                        </div>
+                        <div class="confidence-bars">
+                            <div class="conf-bar-item">
+                                <div class="conf-bar-label">
+                                    <span class="conf-bar-name">Pneumonia</span>
+                                    <span class="conf-bar-pct">90%</span>
+                                </div>
+                                <div class="conf-bar-track">
+                                    <div class="conf-bar-fill" style="--bar-width: 90%; --bar-color: var(--primary-500);"></div>
+                                </div>
+                            </div>
+                            <div class="conf-bar-item">
+                                <div class="conf-bar-label">
+                                    <span class="conf-bar-name">Tuberculosis</span>
+                                    <span class="conf-bar-pct">6%</span>
+                                </div>
+                                <div class="conf-bar-track">
+                                    <div class="conf-bar-fill" style="--bar-width: 6%; --bar-color: #ef4444;"></div>
+                                </div>
+                            </div>
+                            <div class="conf-bar-item">
+                                <div class="conf-bar-label">
+                                    <span class="conf-bar-name">COPD</span>
+                                    <span class="conf-bar-pct">3%</span>
+                                </div>
+                                <div class="conf-bar-track">
+                                    <div class="conf-bar-fill" style="--bar-width: 3%; --bar-color: #f97316;"></div>
+                                </div>
+                            </div>
+                            <div class="conf-bar-item">
+                                <div class="conf-bar-label">
+                                    <span class="conf-bar-name">Asthma</span>
+                                    <span class="conf-bar-pct">1%</span>
+                                </div>
+                                <div class="conf-bar-track">
+                                    <div class="conf-bar-fill" style="--bar-width: 1%; --bar-color: #8b5cf6;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== CHART PLACEHOLDER ===== -->
+                    <div class="dash-card" data-animate>
+                        <div class="dash-card-header">
+                            <h3 class="dash-card-title">
+                                <i class="fa-solid fa-chart-pie"></i> Classification Distribution
+                            </h3>
+                            <span class="dash-card-badge">Chart</span>
+                        </div>
+                        <div class="chart-placeholder" id="chart-placeholder">
+                            <canvas id="classification-chart" width="400" height="250"></canvas>
+                            <div class="chart-overlay">
+                                <i class="fa-solid fa-chart-pie"></i>
+                                <span>Interactive chart — powered by Chart.js</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== AUDIO WAVEFORM PLACEHOLDER ===== -->
+                    <div class="dash-card" data-animate>
+                        <div class="dash-card-header">
+                            <h3 class="dash-card-title">
+                                <i class="fa-solid fa-wave-square"></i> Audio Waveform Analysis
+                            </h3>
+                            <span class="dash-card-badge">Waveform</span>
+                        </div>
+                        <div class="waveform-placeholder" id="waveform-placeholder">
+                            <canvas id="waveform-canvas" width="600" height="150"></canvas>
+                        </div>
+                        <div class="waveform-meta">
+                            <span><i class="fa-solid fa-clock"></i> Duration: 8.4s</span>
+                            <span><i class="fa-solid fa-wave-square"></i> Sample Rate: 16kHz</span>
+                            <span><i class="fa-solid fa-tag"></i> Crackle Detected</span>
+                        </div>
+                    </div>
+
+                    <!-- ===== AI EXPLANATION ===== -->
+                    <div class="dash-card dash-explanation" data-animate>
+                        <div class="dash-card-header">
+                            <h3 class="dash-card-title">
+                                <i class="fa-solid fa-lightbulb"></i> AI Explanation
+                            </h3>
+                            <span class="dash-card-badge xai">XAI</span>
+                        </div>
+                        <div class="explanation-content">
+                            <div class="explanation-heatmap">
+                                <div class="heatmap-placeholder">
+                                    <i class="fa-solid fa-fire"></i>
+                                    <span>Grad-CAM Heatmap</span>
+                                    <p>Highlighting regions of interest on chest X-ray</p>
+                                </div>
+                            </div>
+                            <div class="explanation-text">
+                                <h4>Key Findings</h4>
+                                <ul class="explanation-list">
+                                    <li>
+                                        <i class="fa-solid fa-circle-dot"></i>
+                                        <span><strong>Consolidation</strong> detected in right lower lobe region with 92% activation</span>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-circle-dot"></i>
+                                        <span><strong>Air bronchograms</strong> visible in affected area, consistent with bacterial pneumonia</span>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-circle-dot"></i>
+                                        <span><strong>Crackle sounds</strong> at 300-600Hz range correlate with fluid in alveoli</span>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-circle-dot"></i>
+                                        <span><strong>LIME analysis</strong> confirms top 5 features contributing to Pneumonia classification</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== RECOMMENDATIONS ===== -->
+                    <div class="dash-card" data-animate>
+                        <div class="dash-card-header">
+                            <h3 class="dash-card-title">
+                                <i class="fa-solid fa-clipboard-list"></i> Recommendations
+                            </h3>
+                        </div>
+                        <div class="recommendations-grid">
+                            <div class="rec-item">
+                                <div class="rec-icon" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">
+                                    <i class="fa-solid fa-user-doctor"></i>
+                                </div>
+                                <div>
+                                    <h5 class="rec-title">Consult Pulmonologist</h5>
+                                    <p class="rec-desc">Schedule an appointment for clinical confirmation and treatment plan.</p>
+                                </div>
+                            </div>
+                            <div class="rec-item">
+                                <div class="rec-icon" style="background: rgba(59, 130, 246, 0.1); color: var(--primary-500);">
+                                    <i class="fa-solid fa-vial"></i>
+                                </div>
+                                <div>
+                                    <h5 class="rec-title">Lab Tests</h5>
+                                    <p class="rec-desc">Complete blood count, sputum culture, and CRP levels recommended.</p>
+                                </div>
+                            </div>
+                            <div class="rec-item">
+                                <div class="rec-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
+                                    <i class="fa-solid fa-pills"></i>
+                                </div>
+                                <div>
+                                    <h5 class="rec-title">Treatment Options</h5>
+                                    <p class="rec-desc">Antibiotics course may be prescribed based on pathogen identification.</p>
+                                </div>
+                            </div>
+                            <div class="rec-item">
+                                <div class="rec-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success);">
+                                    <i class="fa-solid fa-bed"></i>
+                                </div>
+                                <div>
+                                    <h5 class="rec-title">Rest & Recovery</h5>
+                                    <p class="rec-desc">Adequate rest, hydration, and follow-up X-ray in 4-6 weeks.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================= -->
+        <!--     PHASE 7: REAL-TIME DATA SECTION        -->
+        <!-- ========================================= -->
+        <section id="realtime" class="section realtime-section">
+            <div class="container">
+
+                <!-- Section Header -->
+                <div class="section-header" data-animate>
+                    <span class="section-tag">
+                        <i class="fa-solid fa-microchip"></i>
+                        IoT Integration
+                    </span>
+                    <h2 class="section-title">Live Audio from<br><span class="gradient-text">ESP32 Device</span></h2>
+                    <p class="section-description">
+                        Connect to an ESP32 microcontroller with a digital stethoscope for 
+                        real-time lung sound capture and continuous monitoring.
+                    </p>
+                </div>
+
+                <!-- Connection Status Banner -->
+                <div class="rt-status-banner" data-animate id="rt-status-banner">
+                    <div class="rt-status-left">
+                        <div class="rt-status-indicator" id="rt-status-indicator">
+                            <span class="rt-dot" id="rt-dot"></span>
+                            <span class="rt-status-text" id="rt-status-text">Disconnected</span>
+                        </div>
+                        <span class="rt-device-name">
+                            <i class="fa-solid fa-microchip"></i> ESP32-WROOM-32
+                        </span>
+                    </div>
+                    <div class="rt-status-right">
+                        <div class="rt-meta-item">
+                            <i class="fa-solid fa-network-wired"></i>
+                            <span id="rt-ip">—</span>
+                        </div>
+                        <div class="rt-meta-item">
+                            <i class="fa-solid fa-clock"></i>
+                            <span id="rt-uptime">—</span>
+                        </div>
+                        <div class="rt-meta-item">
+                            <i class="fa-solid fa-signal"></i>
+                            <span id="rt-signal">—</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Waveform Monitor -->
+                <div class="rt-monitor-card" data-animate>
+                    <div class="rt-monitor-header">
+                        <h3 class="rt-monitor-title">
+                            <span class="rt-live-badge" id="rt-live-badge">
+                                <span class="rt-live-dot"></span> LIVE
+                            </span>
+                            Real-time Lung Sound Monitor
+                        </h3>
+                        <div class="rt-monitor-controls">
+                            <button class="rt-btn rt-btn-connect" id="rt-btn-connect">
+                                <i class="fa-solid fa-plug"></i> Connect
+                            </button>
+                            <button class="rt-btn rt-btn-disconnect" id="rt-btn-disconnect" style="display: none;">
+                                <i class="fa-solid fa-plug-circle-xmark"></i> Disconnect
+                            </button>
+                            <button class="rt-btn rt-btn-analyze" id="rt-btn-analyze" disabled>
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> Analyze Live
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Waveform Canvas -->
+                    <div class="rt-waveform-container">
+                        <canvas id="rt-waveform-canvas" width="800" height="200"></canvas>
+                        <div class="rt-waveform-overlay" id="rt-waveform-overlay">
+                            <i class="fa-solid fa-stethoscope"></i>
+                            <span>Connect to ESP32 to start monitoring</span>
+                        </div>
+                    </div>
+
+                    <!-- Live Stats -->
+                    <div class="rt-live-stats" id="rt-live-stats">
+                        <div class="rt-stat">
+                            <span class="rt-stat-label">Frequency</span>
+                            <span class="rt-stat-value" id="rt-freq">—</span>
+                        </div>
+                        <div class="rt-stat">
+                            <span class="rt-stat-label">Amplitude</span>
+                            <span class="rt-stat-value" id="rt-amp">—</span>
+                        </div>
+                        <div class="rt-stat">
+                            <span class="rt-stat-label">Classification</span>
+                            <span class="rt-stat-value" id="rt-class">—</span>
+                        </div>
+                        <div class="rt-stat">
+                            <span class="rt-stat-label">Samples</span>
+                            <span class="rt-stat-value" id="rt-samples">—</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Device Info Cards -->
+                <div class="rt-device-grid" data-animate>
+                    <div class="rt-device-card">
+                        <div class="rt-device-icon" style="--dev-color: var(--primary-500);">
+                            <i class="fa-solid fa-microphone"></i>
+                        </div>
+                        <h4>I2S MEMS Mic</h4>
+                        <p>INMP441 digital microphone module for high-quality audio capture</p>
+                    </div>
+                    <div class="rt-device-card">
+                        <div class="rt-device-icon" style="--dev-color: var(--accent-500);">
+                            <i class="fa-solid fa-wave-square"></i>
+                        </div>
+                        <h4>16kHz Sample Rate</h4>
+                        <p>Optimized for respiratory sound frequencies (100Hz — 2kHz)</p>
+                    </div>
+                    <div class="rt-device-card">
+                        <div class="rt-device-icon" style="--dev-color: var(--success);">
+                            <i class="fa-solid fa-gauge-high"></i>
+                        </div>
+                        <h4>16-bit Depth</h4>
+                        <p>High-resolution audio for accurate spectrogram generation</p>
+                    </div>
+                    <div class="rt-device-card">
+                        <div class="rt-device-icon" style="--dev-color: var(--warning);">
+                            <i class="fa-solid fa-wifi"></i>
+                        </div>
+                        <h4>WebSocket Stream</h4>
+                        <p>Low-latency real-time data transmission via WiFi connection</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================= -->
+        <!--      PHASE 8: CONTACT / FOOTER             -->
+        <!-- ========================================= -->
+        <section id="contact" class="section contact-section">
+            <div class="container">
+
+                <!-- Section Header -->
+                <div class="section-header" data-animate>
+                    <span class="section-tag">
+                        <i class="fa-solid fa-envelope"></i>
+                        Get In Touch
+                    </span>
+                    <h2 class="section-title">Contact<br><span class="gradient-text">Our Team</span></h2>
+                    <p class="section-description">
+                        Have questions about the system? Want to collaborate or learn more? 
+                        Reach out to us and we'll get back to you soon.
+                    </p>
+                </div>
+
+                <!-- Contact Grid -->
+                <div class="contact-grid">
+
+                    <!-- Contact Form -->
+                    <div class="contact-form-card" data-animate>
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contact-name" class="form-label">Full Name</label>
+                                    <div class="form-input-wrap">
+                                        <i class="fa-solid fa-user"></i>
+                                        <input type="text" id="contact-name" class="form-input" placeholder="John Doe" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-email" class="form-label">Email Address</label>
+                                    <div class="form-input-wrap">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        <input type="email" id="contact-email" class="form-input" placeholder="john@example.com" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-subject" class="form-label">Subject</label>
+                                <div class="form-input-wrap">
+                                    <i class="fa-solid fa-tag"></i>
+                                    <select id="contact-subject" class="form-input form-select">
+                                        <option value="">Select a topic...</option>
+                                        <option value="general">General Inquiry</option>
+                                        <option value="technical">Technical Support</option>
+                                        <option value="collaboration">Research Collaboration</option>
+                                        <option value="feedback">Feedback</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-message" class="form-label">Message</label>
+                                <div class="form-input-wrap form-textarea-wrap">
+                                    <i class="fa-solid fa-message"></i>
+                                    <textarea id="contact-message" class="form-input form-textarea" rows="5" placeholder="Write your message here..." required></textarea>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-submit" id="btn-submit">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                Send Message
+                            </button>
+                            <p class="form-status" id="form-status"></p>
+                        </form>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="contact-info" data-animate>
+                        <div class="contact-info-card">
+                            <div class="contact-info-icon" style="--ci-color: var(--primary-500);">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>Email Us</h4>
+                                <p>respiai.project@sjbit.edu.in</p>
+                                <p>ise.dept@sjbit.edu.in</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-card">
+                            <div class="contact-info-icon" style="--ci-color: var(--accent-500);">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>Call Us</h4>
+                                <p>+91 80 2845 2008</p>
+                                <p>Mon — Fri, 9AM — 5PM IST</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-card">
+                            <div class="contact-info-icon" style="--ci-color: var(--success);">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4>Visit Us</h4>
+                                <p>SJB Institute of Technology</p>
+                                <p>Bangalore, Karnataka, India</p>
+                            </div>
+                        </div>
+
+                        <!-- Social mini section -->
+                        <div class="contact-social">
+                            <h4>Follow Our Research</h4>
+                            <div class="social-links-inline">
+                                <a href="#" class="social-link-sm" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" class="social-link-sm" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="#" class="social-link-sm" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                                <a href="#" class="social-link-sm" aria-label="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================= -->
+    <!--               FOOTER                      -->
+    <!-- ========================================= -->
+    <footer class="footer">
+        <div class="container">
+
+            <!-- Footer Top -->
+            <div class="footer-grid">
+                <!-- Brand Column -->
+                <div class="footer-brand">
+                    <a href="#home" class="nav-logo footer-logo">
+                        <div class="logo-icon">
+                            <i class="fa-solid fa-lungs"></i>
+                        </div>
+                        <span class="logo-text">Respi<span class="logo-accent">AI</span></span>
+                    </a>
+                    <p class="footer-desc">
+                        An AI-based respiratory disease detection system using 
+                        multimodal deep learning on chest X-rays and lung sounds.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-links">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul>
+                        <li><a href="#home"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="fa-solid fa-chevron-right"></i> About</a></li>
+                        <li><a href="#diseases"><i class="fa-solid fa-chevron-right"></i> Diseases</a></li>
+                        <li><a href="#upload"><i class="fa-solid fa-chevron-right"></i> Upload</a></li>
+                        <li><a href="#dashboard"><i class="fa-solid fa-chevron-right"></i> Dashboard</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div class="footer-links">
+                    <h4 class="footer-heading">Resources</h4>
+                    <ul>
+                        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Documentation</a></li>
+                        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> API Reference</a></li>
+                        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Research Paper</a></li>
+                        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> GitHub Repo</a></li>
+                        <li><a href="#contact"><i class="fa-solid fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-newsletter">
+                    <h4 class="footer-heading">Stay Updated</h4>
+                    <p>Subscribe to get updates on our research and new features.</p>
+                    <form class="newsletter-form" id="newsletter-form">
+                        <div class="newsletter-input-wrap">
+                            <input type="email" class="newsletter-input" placeholder="your@email.com" required>
+                            <button type="submit" class="newsletter-btn" aria-label="Subscribe">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Footer Divider -->
+            <div class="footer-divider"></div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2025 RespiAI — AI-Based Respiratory Disease Detection System
+                </p>
+                <p class="footer-dept">
+                    <i class="fa-solid fa-building-columns"></i>
+                    Department of ISE, SJB Institute of Technology, Bangalore
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== Back to Top Button ===== -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- ===== API Service Layer (Phase 10) ===== -->
+    <script src="js/api.js"></script>
+
+    <!-- ===== Project JavaScript ===== -->
+    <script src="js/script.js"></script>
+</body>
+</html>
